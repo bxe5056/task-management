@@ -1,70 +1,146 @@
-# Getting Started with Create React App
+# React Todo App with Filtering and Sorting
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Create a functional todo (task) application with filtering, sorting, and basic statistics.
 
-In the project directory, you can run:
+## Live demo
 
-### `npm start`
+[https://leidos.bentheitguy.me](https://leidos.bentheitguy.me)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Implemented Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Todo Management**
 
-### `npm test`
+   - ✅ Add new todos with a title and priority level (Low, Medium, High)
+   - ✅ Mark todos as completed (and uncompleted)
+   - ✅ Delete todos
+   - ✅ Edit existing todo titles (via dialog)
+   - ✅ Edit todo priorities inline
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Advanced Filtering & Sorting**
 
-### `npm run build`
+   - ✅ Filter todos by completion status (All, Active, Completed)
+   - ✅ Search todos by title
+   - ✅ Sort by multiple fields (Priority, Task Name, Created Date, Completion)
+   - ✅ Sort direction control (Ascending/Descending)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Enhanced Statistics Summary**
+   - ✅ Display count of total/active/completed todos with percentages of the total
+   - ✅ Show the highest priority incomplete todo (interactive)
+   - ✅ Visual cards with icons and color coding
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Technical Implementation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **State Management**
 
-### `npm run eject`
+   - ✅ Uses Zustand instead of useState for global state management
+   - ✅ Local storage persistence implemented
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Component Structure**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   - ✅ TodoForm (for adding new todos)
+   - ✅ TodoList (for displaying and managing todos with advanced table view)
+   - ✅ TodoStats (for showing enhanced statistics)
+   - ✅ ErrorBoundary component for error handling
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Modern UI/Styling**
+   - ✅ Material-UI (MUI) component library
+   - ✅ Custom theme with color-coded priorities
+   - ✅ Responsive design with mobile-friendly layout
+   - ✅ Table layout with search functionality
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Bonus Features
 
-## Learn More
+- ✅ **Local storage persistence** - All todos are automatically saved to browser storage
+- ✅ **Edit functionality** - Edit todo titles and priorities
+- ✅ **Comprehensive testing** - Component tests using React Test Suite / Jest
+- ✅ **Error boundaries** - Graceful error handling
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Technology Stack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **React 19** - Latest React version with modern hooks
+- **Zustand** - Lightweight state management
+- **Material-UI (MUI)** - Professional React component library
+- **Material Icons** - Consistent iconography
+- **React Testing Library** - Comprehensive component testing
 
-### Code Splitting
+## Data Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The application uses the following enhanced data structure:
 
-### Analyzing the Bundle Size
+```javascript
+const initialTodos = [
+  {
+    id: "uuid-string",
+    // Uses crypto.randomUUID() instead of integer for unique IDs
+    // Integer IDs are still supported, but new tasks are UUIDs
+    title: "Learn React Hooks",
+    completed: false,
+    priority: "High",
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: "uuid-string-2",
+    title: "Complete practice project",
+    completed: true,
+    priority: "Medium",
+    createdAt: new Date(Date.now() - 86400000).toISOString(), // 1 day ago
+  },
+];
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Project Structure
 
-### Making a Progressive Web App
+```
+src/
+├── components/
+│   ├── TodoForm.js          # Enhanced form with MUI components
+│   ├── TodoList.js          # Advanced table with filtering/sorting
+│   ├── TodoStats.js         # Enhanced statistics dashboard
+│   ├── ErrorBoundary.js     # Error handling component
+│   └── *.test.js           # Comprehensive test files
+├── store/
+│   └── todoStore.js        # Zustand state management
+├── theme.js                # Material-UI custom theme
+└── App.js                  # Main app with layout
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Getting Started
 
-### Advanced Configuration
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Node.js (v14 or higher)
+- npm or yarn
 
-### Deployment
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm install
+```
 
-### `npm run build` fails to minify
+### Available Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run start    # Run development server
+npm run test     # Run test suite
+npm run build    # Build for production
+```
+
+### Dependencies
+
+- `@mui/material` - Material-UI components
+- `@mui/icons-material` - Material-UI icons
+- `zustand` - State management
+- `@testing-library/*` - Testing utilities
+
+## Testing
+
+The project includes tests via react-testing/Jest for all components:
+
+- `TodoForm.test.js` - Form functionality and validation
+- `TodoList.test.js` - List operations and filtering
+- `TodoStats.test.js` - Statistics calculations
+- `App.test.js` - Integration testing
+
+Run the tests with: `npm test`

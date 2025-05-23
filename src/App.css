@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  background-color: var(--background-default);
+  color: var(--text-primary);
 }
 
 .App-logo {
@@ -14,18 +17,193 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  background-color: var(--background-header);
+  box-shadow: var(--shadow-default);
 }
 
-.App-link {
-  color: #61dafb;
+.App-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--background-header-text);
+}
+
+.App-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.left-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.right-column {
+  flex: 2;
+  min-width: 300px;
+}
+
+/* Todo Stats Styles */
+.todo-stats {
+  padding: 20px;
+  border-radius: var(--border-radius);
+  background-color: var(--background-paper);
+  box-shadow: var(--shadow-default);
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.stat-item {
+  padding: 20px;
+  border-radius: var(--border-radius);
+  background-color: var(--background-default);
+  transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+}
+
+.stat-item h3 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.stat-item p {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+/* Todo Form Styles */
+.todo-form {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  background-color: var(--background-paper);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+}
+
+.todo-input {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  background-color: var(--background-default);
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.todo-input::placeholder {
+  color: var(--text-disabled);
+}
+
+.todo-input:focus {
+  outline: none;
+  border-color: var(--primary-main);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.add-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: var(--primary-main);
+  color: var(--text-on-primary);
+  transition: all 0.2s ease;
+}
+
+.add-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Todo List Styles */
+.todo-list {
+  padding: 20px;
+  border-radius: var(--border-radius);
+  background-color: var(--background-paper);
+  box-shadow: var(--shadow-default);
+}
+
+.todo-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.todo-item:hover {
+  background-color: var(--background-default);
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-text {
+  flex: 1;
+  text-align: left;
+  color: var(--text-primary);
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--text-disabled);
+}
+
+.delete-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  background-color: var(--error-main);
+  color: var(--text-on-error);
+  transition: all 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: var(--error-dark);
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App-main {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +213,50 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Error Boundary Styles */
+.error-boundary {
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  background-color: var(--error-light);
+  border: 1px solid var(--error-main);
+}
+
+.error-boundary h2 {
+  margin-bottom: 15px;
+  color: var(--error-main);
+}
+
+.error-boundary details {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.error-boundary summary {
+  cursor: pointer;
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+}
+
+.retry-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: var(--primary-main);
+  color: var(--text-on-primary);
+  transition: all 0.2s ease;
+}
+
+.retry-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.MuiSelect-select {
+  width: 'auto',
 }
